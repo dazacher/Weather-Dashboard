@@ -33,43 +33,54 @@
     <form id="weather-form">
         <div class="row">
             <div class="col-xs-3">
-                <label id="cityLabel" for="city-input">Search for a City</label><br>
-                <input type="text" id="city-input">
-                <!-- Button triggers new city to be added -->
-                <button class="btn" id="searchCityBtn">
-                    <i class="fas fa-search" id="searchFas"></i>
-                    <br>
-                    <!-- Cities goes here -->
-                    <div class="city-view"></div>
+                <div dlass="row">
+                    <div class="cos-xs-12">
+                        <label id="cityLabel" for="city-input">Search for a City</label><br>
+                        <input type="text" id="city-input">
+                        <!-- Button triggers new city to be added -->
+                        <button class="btn" id="searchCityBtn">
+                            <i class="fas fa-search" id="searchFas"></i>
+                            <p></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 buttonView">
+                        <!-- Cities buttons go here -->
+                        <div class="city-view">
 
+                        </div>
 
-
+                    </div>
+                </div>
             </div>
             <div class="col-xs-9">
-                <div class=row>
-                    <form>
-                        <div class="card w-75">
-                            <div class="card-body">
-                                <h5 class="card-title"></h5>
-                                <p class="card-text" id="tempElement1"></p>
-                                <p class="card-text" id="tempElement2"></p>
-                                <p class="card-text" id="tempElement3"></p>
-                                <label class="card-text" tag="normal" id="tempElement4"></label>
-                                <label class="uvIndex"></label>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <form>
+                            <div class="card w-75">
+                                <div class="card-body">
+                                    <h5 class="card-title"></h5>
+                                    <p class="card-text" id="tempElement1"></p>
+                                    <p class="card-text" id="tempElement2"></p>
+                                    <p class="card-text" id="tempElement3"></p>
+                                    <label class="card-text" tag="normal" id="tempElement4"></label>
+                                    <label class="uvIndex"></label>
+                                </div>
                             </div>
-                        </div>
-                    </form>
-                    <form>
-                        <p></p>
-                        <div>
-
-                            <h5 id="fiveDayForecast">5-Day Forecast:
-                            </h5>
-                        </div>
-                        <div class="card-group">
-                            <!-- <div class="card futureForecast">
+                        </form>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <form>
+                                <p></p>
+                                <div>
+                                    <h5 id="fiveDayForecast">5-Day Forecast:
+                                    </h5>
+                                </div>
+                                <div class="card-group">
+                                    <!-- <div class="card futureForecast">
                             <img src="..." class="card-img-top" alt="..."> -->
-                            <!-- <div class="card-body">
+                                    <!-- <div class="card-body">
                                 <h5 class="card-title"></h5>
                                 <p class="card-text" id="tempElement5"></p>
                                 <p class="card-text" id="tempElement6"></p>
@@ -77,8 +88,8 @@
                             </div>
                         </div>
                         <div class="card futureForecast"> -->
-                            <!-- <img src="..." class="card-img-top" alt="..."> -->
-                            <!-- <div class="card-body">
+                                    <!-- <img src="..." class="card-img-top" alt="..."> -->
+                                    <!-- <div class="card-body">
                                 <h5 class="card-title"></h5>
                                 <p class="card-text" id="tempElement7"></p>
                                 <p class="card-text" id="tempElement8"></p>
@@ -86,8 +97,8 @@
                             </div>
                         </div>
                         <div class="card futureForecast"> -->
-                            <!-- <img src="..." class="card-img-top" alt="..."> -->
-                            <!-- <div class="card-body future">
+                                    <!-- <img src="..." class="card-img-top" alt="..."> -->
+                                    <!-- <div class="card-body future">
                                 <h5 class="card-title"></h5>
                                 <p class="card-text" id="tempElement9"></p>
                                 <p class="card-text" id="tempElement10"></p>
@@ -95,8 +106,8 @@
                             </div>
                         </div>
                         <div class="card futureForecast"> -->
-                            <!-- <img src="..." class="card-img-top" alt="..."> -->
-                            <!-- <div class="card-body">
+                                    <!-- <img src="..." class="card-img-top" alt="..."> -->
+                                    <!-- <div class="card-body">
                                 <h5 class="card-title"></h5>
                                 <p class="card-text" id="tempElement11"></p>
                                 <p class="card-text" id="tempElement12"></p>
@@ -104,19 +115,18 @@
                             </div>
                         </div>
                         <div class="card futureForecast"> -->
-                            <!-- <img src="..." class="card-img-top" alt="..."> -->
-                            <!-- <div class="card-body">
+                                    <!-- <img src="..." class="card-img-top" alt="..."> -->
+                                    <!-- <div class="card-body">
                                 <h5 class="card-title"></h5>
                                 <p class="card-text" id="tempElement13"></p>
                                 <p class="card-text" id="tempElement14"></p>
                                 <p class="card-text"><small class="text-muted"></small></p>
                             </div> -->
+                                </div>
+                            </form>
                         </div>
-                    </form>
+                    </div>
                 </div>
-            </div>
-            <div class=row>
-
             </div>
         </div>
         </div>

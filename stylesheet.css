@@ -15,7 +15,11 @@
     width: 35px;
     text-align: center;
     padding-top: 9px;
-    margin-left: -17px;
+    margin-left: -17px;   
+    float: right;
+}
+
+.uvIndex{
     border-bottom-right-radius: 5px;
     border-bottom-left-radius: 5px;
     border-top-left-radius: 5px;
@@ -39,6 +43,7 @@
 #fiveDayForecast{
     float: left;
     width: 100%;
+    visibility: hidden;
 }
 .card-group{
     width: 100%;
@@ -47,6 +52,7 @@
 .futureForecast{
     background-color: #3399FF;
     margin: 25px;
+    color: white;
 }
 
 .danger{
@@ -64,7 +70,7 @@
     text-align: center;
 }
 
-.medium{
+.caution{
     background-color: yellow;
     color: black;
     width: 45px;
@@ -76,4 +82,12 @@
     border-bottom-right-radius: 5px;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
+}
+
+.col-xs-12{
+    width: 100%;
+}
+
+h5, .buttonView{
+    padding: 25px;
 }

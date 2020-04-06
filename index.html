@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Add the fontawesome code -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
+    <!-- Add Stylesheet -->
+    <link rel="stylesheet" href="./stylesheet.css">
+    <!-- Add jquery -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <!-- Add Bootstrap -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+    <!-- Add Moment.js file -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <!-- Add jquery file -->
+    <script src="./assets/script.js"></script>
+    <title>Weather Dashboard</title>
+</head>
+
+<body>
+    <form id="weather-form">
+        <div class="row">
+            <div class="col-xs-3">
+                <label id="cityLabel" for="city-input">Search for a City</label><br>
+                <input type="text" id="city-input">
+                <!-- Button triggers new city to be added -->
+                <button class="btn" id="searchCityBtn">
+                    <i class="fas fa-search" id="searchFas"></i>
+                    <br>
+                    <!-- Cities goes here -->
+                    <div class="city-view"></div>
+
+
+
+            </div>
+            <div class="col-xs-9">
+                <div class=row>
+                    <form>
+                        <div class="card w-75">
+                            <div class="card-body">
+                                <h5 class="card-title"></h5>
+                                <p class="card-text" id="tempElement1"></p>
+                                <p class="card-text" id="tempElement2"></p>
+                                <p class="card-text" id="tempElement3"></p>
+                                <label class="card-text" tag="normal" id="tempElement4"></label>
+                                <label class="uvIndex"></label>
+                            </div>
+                        </div>
+                    </form>
+                    <form>
+                        <p></p>
+                        <div>
+
+                            <h5 id="fiveDayForecast">5-Day Forecast:
+                            </h5>
+                        </div>
+                        <div class="card-group">
+                            <!-- <div class="card futureForecast">
+                            <img src="..." class="card-img-top" alt="..."> -->
+                            <!-- <div class="card-body">
+                                <h5 class="card-title"></h5>
+                                <p class="card-text" id="tempElement5"></p>
+                                <p class="card-text" id="tempElement6"></p>
+                                <p class="card-text"><small class="text-muted"></small></p>
+                            </div>
+                        </div>
+                        <div class="card futureForecast"> -->
+                            <!-- <img src="..." class="card-img-top" alt="..."> -->
+                            <!-- <div class="card-body">
+                                <h5 class="card-title"></h5>
+                                <p class="card-text" id="tempElement7"></p>
+                                <p class="card-text" id="tempElement8"></p>
+                                <p class="card-text"><small class="text-muted"></small></p>
+                            </div>
+                        </div>
+                        <div class="card futureForecast"> -->
+                            <!-- <img src="..." class="card-img-top" alt="..."> -->
+                            <!-- <div class="card-body future">
+                                <h5 class="card-title"></h5>
+                                <p class="card-text" id="tempElement9"></p>
+                                <p class="card-text" id="tempElement10"></p>
+                                <p class="card-text"><small class="text-muted"></small></p>
+                            </div>
+                        </div>
+                        <div class="card futureForecast"> -->
+                            <!-- <img src="..." class="card-img-top" alt="..."> -->
+                            <!-- <div class="card-body">
+                                <h5 class="card-title"></h5>
+                                <p class="card-text" id="tempElement11"></p>
+                                <p class="card-text" id="tempElement12"></p>
+                                <p class="card-text"><small class="text-muted"></small></p>
+                            </div>
+                        </div>
+                        <div class="card futureForecast"> -->
+                            <!-- <img src="..." class="card-img-top" alt="..."> -->
+                            <!-- <div class="card-body">
+                                <h5 class="card-title"></h5>
+                                <p class="card-text" id="tempElement13"></p>
+                                <p class="card-text" id="tempElement14"></p>
+                                <p class="card-text"><small class="text-muted"></small></p>
+                            </div> -->
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class=row>
+
+            </div>
+        </div>
+        </div>
+    </form>
+
+</body>
+
+</html>

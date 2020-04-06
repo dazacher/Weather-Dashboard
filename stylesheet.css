@@ -1,0 +1,79 @@
+.col-xs-3{
+    padding-left: 25px;
+    width: 25%;
+}
+
+#cityLabel{
+    font-weight: bold;
+    font-size: x-large;
+}
+
+#searchFas{
+    background-color: #3399FF;
+    color: white;
+    height: 35px;
+    width: 35px;
+    text-align: center;
+    padding-top: 9px;
+    margin-left: -17px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.city-view{
+    float: left;
+}
+
+.col-xs-9{
+    padding: 25px;
+    width: 75%;
+}
+
+.card-body{
+    width: 100%;
+    float: right;
+}
+
+#fiveDayForecast{
+    float: left;
+    width: 100%;
+}
+.card-group{
+    width: 100%;
+}
+
+.futureForecast{
+    background-color: #3399FF;
+    margin: 25px;
+}
+
+.danger{
+    background-color: red;
+    color: white;
+    width: 45px;
+    text-align: center;
+
+}
+
+.normal{
+    background-color: green;
+    color: white;
+    width: 45px;
+    text-align: center;
+}
+
+.medium{
+    background-color: yellow;
+    color: black;
+    width: 45px;
+    text-align: center;
+}
+
+#tempElement4{
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}

@@ -1,6 +1,6 @@
-.col-xs-4{
+.col-xs-3{
     padding-left: 25px;
-    width: 35%;
+    width: 25%;
 }
 
 #cityLabel{
@@ -17,14 +17,18 @@
     padding-top: 9px;
     margin-left: -27px;   
     float: right;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 }
 
-.uvIndex{
-    border-bottom-right-radius: 5px;
-    border-bottom-left-radius: 5px;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-}
+/* .uvIndex{
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+} */
 
 .city-view{
     float: left;
@@ -32,9 +36,9 @@
 .wi-day-sunny:before {
     content: "\f00d";
   }
-.col-xs-8{
+.col-xs-9{
     padding-left: 25px;
-    width: 65%;
+    width: 75%;
 }
 
 .card-body{

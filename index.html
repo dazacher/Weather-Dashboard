@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
         integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
     <!-- Add Stylesheet -->
-    <link rel="stylesheet" href="./stylesheet.css">
+    <link rel="stylesheet" href="./Assets/stylesheet.css">
     <!-- Add jquery -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
@@ -25,16 +25,16 @@
     <!-- Add Moment.js file -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <!-- Add jquery file -->
-    <script src="./assets/script.js"></script>
+    <script src="./Assets/script.js"></script>
     <title>Weather Dashboard</title>
 </head>
 
 <body>
     <form id="weather-form">
         <div class="row">
-            <div class="col-xs-3">
-                <div dlass="row">
-                    <div class="cos-xs-12">
+            <div class="col-xs-4 searchFunctionality">
+                <div class="row">
+                    <div class="cos-xs-12" searchBtn>
                         <label id="cityLabel" for="city-input">Search for a City</label><br>
                         <input type="text" id="city-input">
                         <!-- Button triggers new city to be added -->
@@ -43,34 +43,42 @@
                             <p></p>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row rowButtonView">
                     <div class="col-xs-12 buttonView">
                         <!-- Cities buttons go here -->
                         <div class="city-view">
+                            <div class="row">
+                                <div class="col-xs-12 colButtonView">
+
+                                </div>
+                            </div>
 
                         </div>
 
                     </div>
                 </div>
             </div>
-            <div class="col-xs-9">
-                <div class="row">
-                    <div class="col-xs-12">
+            <div class="col-xs-8 colDisplayArea">
+                <div class="row rowMainDataCard">
+                    <div class="col-xs-12 colMainDataCard">
                         <form>
                             <div class="card w-75">
                                 <div class="card-body">
-                                    <h5 class="card-title"></h5>
+                                    <h5 class="card-title"><i id="images"></i>
+                                        <!-- <i id="images"></i> -->
+                                    </h5>
                                     <p class="card-text" id="tempElement1"></p>
                                     <p class="card-text" id="tempElement2"></p>
                                     <p class="card-text" id="tempElement3"></p>
-                                    <label class="card-text" tag="normal" id="tempElement4"></label>
+                                    <label class="card-text" id="tempElement4"></label>
                                     <label class="uvIndex"></label>
+                                    <label class="weatherDate"></label>
                                 </div>
                             </div>
                         </form>
                     </div>
-                    <div class="row">
-                        <div class="col-xs-12">
+                    <div class="row row5DayForcast">
+                        <div class="col-xs-12 col5DayForcast">
                             <form>
                                 <p></p>
                                 <div>
@@ -78,50 +86,7 @@
                                     </h5>
                                 </div>
                                 <div class="card-group">
-                                    <!-- <div class="card futureForecast">
-                            <img src="..." class="card-img-top" alt="..."> -->
-                                    <!-- <div class="card-body">
-                                <h5 class="card-title"></h5>
-                                <p class="card-text" id="tempElement5"></p>
-                                <p class="card-text" id="tempElement6"></p>
-                                <p class="card-text"><small class="text-muted"></small></p>
-                            </div>
-                        </div>
-                        <div class="card futureForecast"> -->
-                                    <!-- <img src="..." class="card-img-top" alt="..."> -->
-                                    <!-- <div class="card-body">
-                                <h5 class="card-title"></h5>
-                                <p class="card-text" id="tempElement7"></p>
-                                <p class="card-text" id="tempElement8"></p>
-                                <p class="card-text"><small class="text-muted"></small></p>
-                            </div>
-                        </div>
-                        <div class="card futureForecast"> -->
-                                    <!-- <img src="..." class="card-img-top" alt="..."> -->
-                                    <!-- <div class="card-body future">
-                                <h5 class="card-title"></h5>
-                                <p class="card-text" id="tempElement9"></p>
-                                <p class="card-text" id="tempElement10"></p>
-                                <p class="card-text"><small class="text-muted"></small></p>
-                            </div>
-                        </div>
-                        <div class="card futureForecast"> -->
-                                    <!-- <img src="..." class="card-img-top" alt="..."> -->
-                                    <!-- <div class="card-body">
-                                <h5 class="card-title"></h5>
-                                <p class="card-text" id="tempElement11"></p>
-                                <p class="card-text" id="tempElement12"></p>
-                                <p class="card-text"><small class="text-muted"></small></p>
-                            </div>
-                        </div>
-                        <div class="card futureForecast"> -->
-                                    <!-- <img src="..." class="card-img-top" alt="..."> -->
-                                    <!-- <div class="card-body">
-                                <h5 class="card-title"></h5>
-                                <p class="card-text" id="tempElement13"></p>
-                                <p class="card-text" id="tempElement14"></p>
-                                <p class="card-text"><small class="text-muted"></small></p>
-                            </div> -->
+                                   
                                 </div>
                             </form>
                         </div>

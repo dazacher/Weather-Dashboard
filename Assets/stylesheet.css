@@ -1,6 +1,6 @@
-.col-xs-3{
+.col-xs-4{
     padding-left: 25px;
-    width: 25%;
+    width: 35%;
 }
 
 #cityLabel{
@@ -15,7 +15,7 @@
     width: 35px;
     text-align: center;
     padding-top: 9px;
-    margin-left: -17px;   
+    margin-left: -27px;   
     float: right;
 }
 
@@ -29,10 +29,12 @@
 .city-view{
     float: left;
 }
-
-.col-xs-9{
-    padding: 25px;
-    width: 75%;
+.wi-day-sunny:before {
+    content: "\f00d";
+  }
+.col-xs-8{
+    padding-left: 25px;
+    width: 65%;
 }
 
 .card-body{
@@ -55,7 +57,7 @@
     color: white;
 }
 
-.danger{
+.tag.danger{
     background-color: red;
     color: white;
     width: 45px;
@@ -63,14 +65,14 @@
 
 }
 
-.normal{
+.tag.normal{
     background-color: green;
     color: white;
     width: 45px;
     text-align: center;
 }
 
-.caution{
+.tag.caution{
     background-color: yellow;
     color: black;
     width: 45px;
@@ -88,6 +90,10 @@
     width: 100%;
 }
 
-h5, .buttonView{
-    padding: 25px;
+.row{
+    padding-left: 10px;
+}
+
+#cityLabel, #city-input{
+    padding-left: 10px;
 }

@@ -5,33 +5,62 @@ $(document).ready(function () {
 
 
     $("#searchCityBtn").on("click", function (event) {
+        $(".card-group").empty();
+
         var city = $("#city-input").val().trim();
+        console.log("$City " +  $("#city-input").val().trim())
         console.log(city);
         const units = "imperial";
         const weatherURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=" + units + "&appid=" + apiKey;
         console.log("Search button has been clicked");
         console.log(city);
         event.preventDefault();
-        // Create a new weather button
+        // Create a new weather buttons
         var weatherBtn = $("<button>");
+        var weatherPar =$("<p>");
         // Providing the initial button text
         weatherBtn.text($("#city-input").val().trim());
-        // Adding the button to the city-view div
-        $(".city-view").append(weatherBtn);
-        fiveDayForecast
-        $("#fiveDayForecast").attr("visibility", "unhidden");
+        // Adding the buttons to the city-view div;
+        $(".colButtonView").append(weatherBtn);
+        $(".colButtonView").append(weatherPar);
+        $("#fiveDayForecast").attr("visibility", "display");
         $.ajax({
             url: weatherURL,
             method: "GET"
         }).then(function (response) {
             console.log(response);
             console.log(response.city.name);
+            let lat = response.city.coord.lat;
+            console.log("Response.ciy.coord.lon " + response.city.coord.lon);
+            let lon = response.city.coord.lon;
+            console.log("Response.ciy.coord.lat " + response.city.coord.lat);
 
             for (i = 0; i < 6; i++) {
                 console.log("In for loop");
                 // console.log("response.list[0]" + response.list[0]);
                 if (i < 1) {
-                    console.log("Response[i] " + response.list[i].dt_txt);
+                    console.log("Weather " + response.list[i].weather[0].main);
+                    if(response.list[i].weather[0].main === "Clear"){
+                    
+                        var weatherImage = $("#images"); 
+                        var weatherIcon = $("<i class='fas fa-sun'>");
+                        weatherImage.append(weatherIcon);
+
+                        var weatherDiv = $("<div class='card'>");
+                        var temperaturePar = $("<p>");
+                        temperaturePar.text("Temp: " + tempStorage + " °F");
+                        weatherDiv.append(temperaturePar);
+
+                    }else if (response.list[i].weather[0].main === "Rain"){
+
+                    }else if(response.list[i].weather[0].main === "Clouds"){
+
+                    }else if(response.list[i].weather[0].main === "Snow"){
+
+                    }else{
+
+                    };
+                    console.log("Response[i] " + moment(response.list[i].dt_txt).format('l'));
                     // response.list[0].dt_text;
                     var cityName = response.city.name;
                     console.log(response.list[i].main.temp);
@@ -40,23 +69,26 @@ $(document).ready(function () {
                     var humidity = response.list[i].main.humidity;
                     console.log(response.list[i].wind.speed);
                     var windSpeed = response.list[i].wind.speed;
-                    console.log("Date of weather " + response.list[i].dt_txt);
+                    console.log("Date of weather " + moment(response.list[i].dt_txt).format('l'));
                     // Code for initial card
-                    var dateOfWeather = response.list[i].dt_txt;
+                    var dateOfWeather = moment(response.list[i].dt_txt).format('l');
                     console.log("Date of weather " + dateOfWeather);
 // $("#currentDay").text(moment().format('dddd MMMM Do YYYY, h:mm a'));
                     $(".card-title").text(cityName + "   " + dateOfWeather);
                     $("#tempElement1").text("Temperature: " + temperature + " °F");
                     $("#tempElement2").text("Humidity: " + humidity + "%");
-                    $("#tempElement3").text("Wind Speed: " + windSpeed + " MPH");
-
-                    
+                    $("#tempElement3").text("Wind Speed: " + windSpeed + " MPH");              
                 }
                 else {
+                    console.log("In else part of loop");
+                    // Get weather icon
+                if (response[i].list.weather[0].main === "Clear"){
+                    // 
+                }
                     // Make a new card                    
                     // Code for 5 Day forecast iterations 2 - 6
                     //   Storing the Date, temperature, humidity
-                    var weatherDate = response.list[i].dt_txt;
+                    var weatherDate = moment(response.list[i].dt_txt).format('l');
                     var tempStorage = response.list[i].main.temp;
                     var humidityStorage = response.list[i].main.humidity;
                     //   Creating an element to hold the date, temperature, humidity
@@ -84,10 +116,7 @@ $(document).ready(function () {
             };
 
             // Get UV Index
-            let lat = response.city.coord.lat;
-            console.log("Response.ciy.coord.lon " + response.city.coord.lon);
-            let lon = response.city.coord.lon;
-            console.log("Response.ciy.coord.lat " + response.city.coord.lat);
+           
             const uvIndexURL = "http://api.openweathermap.org/data/2.5/uvi/forecast?appid=" + apiKey + "&lat=" + lat + "&lon=" + lon + "&cnt=1"
 
             $.ajax({
@@ -96,24 +125,23 @@ $(document).ready(function () {
             }).then(function (responseUV) {
                 // console.log("responseUV " + responseUV);
                 console.log("responseUV " + JSON.stringify(responseUV));
-                console.log("ResponseUV[i].value " + JSON.stringify(responseUV[0].value))
+                console.log("ResponseUV[i].value " + responseUV[0].value)
+                 $(".uvIndex").addClass("normal");
+
                 if (responseUV[0].value > 7) {
-                    $(".uvIndex").addClass("danger");
-                } else if (responseUV[0].value < 7 && responseUV.value[0] > 4) {
-                    $(".uvIndex").addClass("caution");
+                    $(".uvIndex").attr("danger");
+                    // $(".uvIndex").addClass("danger");
+                } else if (responseUV[0].value < 7 && responseUV[0].value > 4) {
+                    $(".uvIndex").attr("caution");
+                    // $(".uvIndex").addClass("caution");
                 } else {
-                    $(".uvIndex").addClass("normal");
+                    // $(".uvIndex").attr("normal");
+                    // $(".uvIndex").addClass("normal");
                 }
 
                 console.log("UV Index: " + responseUV[0].value);
                 $("#tempElement4").text("UV Index: ");
                 $(".uvIndex").text(responseUV[0].value);
-
-                console.log("date " + responseUV[0].date_iso);
-                $(".city").text(response.city.name + "Date:  " + responseUV[0].date_iso);
-
-
-
             });
 
         });

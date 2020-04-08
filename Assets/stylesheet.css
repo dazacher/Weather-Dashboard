@@ -15,7 +15,8 @@
     width: 35px;
     text-align: center;
     padding-top: 9px;
-    margin-left: -27px;   
+    /* margin-bottom: 50px; */
+    margin-left: -15px;   
     float: right;
     border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;
@@ -61,22 +62,21 @@
     color: white;
 }
 
-.tag.danger{
+.danger{
     background-color: red;
     color: white;
     width: 45px;
     text-align: center;
-
 }
 
-.tag.normal{
+.normal{
     background-color: green;
     color: white;
     width: 45px;
     text-align: center;
 }
 
-.tag.caution{
+.caution{
     background-color: yellow;
     color: black;
     width: 45px;

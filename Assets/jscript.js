@@ -7,28 +7,14 @@ $(document).ready(function () {
         weatherArr = [];
     }
     else {
-        // weatherArr = localStorage.getItem("weatherArr", weatherArr);
-        // for (let i = 0; i <= weatherArr.length; i++) {
+
         var lastIndex = weatherArr.length - 1
         const weatherURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + weatherArr[lastIndex] + "&units=" + units + "&appid=" + apiKey;
 
-        // $.ajax({
-        //     url: weatherURL,
-        //     method: "GET"
-        // }).then(function (responseFromStorage) {
-        //     console.log("ResponseFromStorage ", responseFromStorage)
+        loadTemperatureData(weatherArr[lastIndex], weatherArr);
 
-        //     let lat = responseFromStorage.city.coord.lat;
-        //     console.log("Response.ciy.coord.lon " + responseFromStorage.city.coord.lon);
-        //     // // Get the longitude for the next API call
-        //     let lon = responseFromStorage.city.coord.lon;
-        //     console.log("Response.ciy.coord.lat " + responseFromStorage.city.coord.lat);
-            loadTemperatureData(weatherArr[lastIndex])
-        // });
-        // weatherArr = localStorage.getItem("weatherArr" + i);
-        // };
-        // localStorage.getItem("weatherArr", weatherArr);
-        // loadTemperatureData("weatherArr")
+        reloadButtons(weatherArr[lastIndex], weatherArr);
+
     }
     console.log("weatherArr ", weatherArr);
 
@@ -44,14 +30,17 @@ $(document).ready(function () {
         if (!city) {
             return;
         }
-        loadTemperatureData(city);
+        loadTemperatureData(city, weatherArr);
     });
 
 
     $(".savedCityBtn").on("click", function (event) {
         console.log("Saved button clicked", searchCityBtn);
-        console.log("$('.savedCityBtn').val().trim()  ", $(".savedCityBtn").val().trim())
-        var cityFromHistory = $(".savedCityBtn").val().trim();
+        cityBtn =  $(".savedCityBtn").val().trim()
+        console.log("$('.savedCityBtn').val().trim()  ",cityBtn);
+        // city = "";
+        var city = $(".savedCityBtn").val().trim();
+        console.log(".savedCityBtn.val().trim()", $(".savedCityBtn").val().trim())
         $(".card-group").empty();
         cityName = "";
         temperature = ""
@@ -62,12 +51,24 @@ $(document).ready(function () {
         $("#tempElement3").text("");
         $("#uvIndex").text("");
 
-        loadTemperatureData(cityFromHistory);
+        loadTemperatureData(city, weatherArr);
     });
 
+    function reloadButtons(cityLastIndex, weatherArr) {
+        loadTemperatureData(cityLastIndex, weatherArr);
+        for (let m = 0; m < weatherArr.length; m++) {
 
-    function loadTemperatureData(city) {
+            var weatherBtn = $("<input>");
+            var reloadPar = $("<p>");
+            weatherBtn.val(weatherArr[m]);            
+            $(".colButtonView").append(weatherBtn);
+            weatherBtn.attr('onclick', function (event) { });
+            weatherBtn.attr("class", "savedCityBtn");            
+        };
+    }
 
+    function loadTemperatureData(city, passedWeatherArr) {
+        console.log(city);
         const weatherURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=" + units + "&appid=" + apiKey;
         $.ajax({
             url: weatherURL,
@@ -90,18 +91,21 @@ $(document).ready(function () {
                 method: "GET"
             }).then(function (responseData) {
                 console.log("response.Data ", responseData);
-                // console.log("Inside Function City ", response.city.name);
+                console.log("city ", city);
+                console.log("Inside Function City ", response.city.name);
                 // references the history array 
                 // check to see if city is in array
                 $(".card-group").empty();
-                console.log("$City " + $("#city-input").val().trim())
-                console.log(city);
+                // console.log("$City " + $("#city-input").val().trim())
+                var city = response.city.name;
+
 
                 // Create a new weather buttons
                 var weatherBtn = $("<input>");
                 var weatherPar = $("<p>");
                 // Providing the initial button text
-                // var weatherCityInput = $("#city-input").val().trim()
+
+                console.log(city);
                 if (!city) {
                     return;
                 }
@@ -109,7 +113,7 @@ $(document).ready(function () {
                 if (weatherArr.indexOf(city) < 0) {
                     console.log('New entry')
                     console.log("city", city);
-
+                    // var city = $("#city-input").val().trim()
                     weatherBtn.val(city);
                     $(".colButtonView").append(weatherBtn);
                     weatherBtn.attr("class", "savedCityBtn");
@@ -128,7 +132,7 @@ $(document).ready(function () {
                 localStorage.setItem("weatherArr", JSON.stringify(weatherArr));
                 // $(".colButtonView").append(weatherBtn);
                 // Adding the buttons to the city-view div;
-                // weatherBtn.val(weatherCityInput);
+                weatherBtn.val(city);
                 $(".colButtonView").append(weatherPar);
                 $("#fiveDayForecast").css("visibility", "visible");
 
@@ -186,13 +190,11 @@ $(document).ready(function () {
                         console.log(response.list[i].wind.speed);
                         var windSpeed = response.list[i].wind.speed;
 
-                        console.log("Date of weather " + moment(response.list[i].dt_txt).format("MM/DD/YYYY"));
                         // Code for initial card
                         var dateOfWeather = moment(response.list[i].dt_txt).format('l');
                         console.log("Date of weather " + dateOfWeather);
                         $(".card-title").text(cityName + "   " + dateOfWeather);
                         $(".card-title").append(weatherIcon);
-                        // $(".card-title").text(cityName + "   " + dateOfWeather + "  " + $("#images").append(weatherIcon));
                         $("#tempElement1").text("Temperature: " + temperature + " °F");
                         $("#tempElement2").text("Humidity: " + humidity + "%");
                         $("#tempElement3").text("Wind Speed: " + windSpeed + " MPH");
@@ -217,6 +219,7 @@ $(document).ready(function () {
                             weatherIcon.attr("src", imageUrl);
                             weatherIcon.attr("alt", "weather image");
                             $("#images").append(weatherIcon);
+
                         } else if (responseData.daily[i].weather[0].main === "Clouds") {
                             // Add Weather icon between date and temperature for cloudy days
                             var imageUrl = "./Assets/images/iconfinder_Overcast_47309.png";
@@ -224,6 +227,7 @@ $(document).ready(function () {
                             weatherIcon.attr("src", imageUrl);
                             weatherIcon.attr("alt", "weather image");
                             $("#images").append(weatherIcon);
+
                         } else if (responseData.daily[i].weather[0].main === "Snow") {
                             // Add Weather icon between date and temperature for snowy days
                             var imageUrl = "./Assets/images/iconfinder_snow_3233849.png";
@@ -231,6 +235,7 @@ $(document).ready(function () {
                             weatherIcon.attr("src", imageUrl);
                             weatherIcon.attr("alt", "weather image");
                             $("#images").append(weatherIcon);
+
                         } else {
                             // Add Weather icon between date and temperature for partly cloudy days
                             var imageUrl = "./Assets/images/iconfinder_sunny_3233850.png";
@@ -243,10 +248,8 @@ $(document).ready(function () {
                         // Make a new card                    
                         // Code for 5 Day forecast iterations 2 - 6
                         //   Storing the Date, temperature, humidity
-                        // moment.unix(1318781876).utc();
 
                         var weatherDate = moment.unix(responseData.daily[i].dt).format("M/D/YYYY");
-                        // var weatherDate = moment(responseData.daily[i].dt).format('l');
                         var tempStorage = responseData.daily[i].temp.day;
                         var humidityStorage = responseData.daily[i].humidity;
 
@@ -262,10 +265,7 @@ $(document).ready(function () {
                         // Displaying the date, temperature, humidity
                         $(".card-group").append(weatherDiv);
                         weatherDiv.append(weatherDateH5);
-
                         weatherDiv.append(weatherIcon);
-
-
                         weatherDiv.append(temperaturePar);
                         weatherDiv.append(humidityPar);
                         weatherDiv.attr("class", "futureForecast");
@@ -274,29 +274,24 @@ $(document).ready(function () {
                     };
                 };
 
-                // const uvIndexDaysURL = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&units=" + units + "&appid=" + apiKey + "&cnt=6";
-
-                // $.ajax({
-                //     url: uvIndexDaysURL,
-                //     method: "GET"
-                // }).then(function (responseUV) {
-                // console.log("responseUV " , responseUV);
+                // Remove uvIndex class between lookups so as not to confuse the system
                 $("#uvIndex").removeAttr("class");
-                // console.log("responseUV ", JSON.stringify(responseUV));
-                console.log("responseData.daily[i].weather.uvi " + responseData.daily[i].uvi)
-                // $("#uvIndex").addClass("normal");
-
+                console.log("responseData.daily[i].weather.uvi " + responseData.daily[i].uvi);
+                // Set color level of uvIndex
                 if (responseData.daily[i].uvi > 7) {
-                    // $(".uvIndex").attr("danger");
+                    // Red
                     $("#uvIndex").addClass("danger");
-                } else if (responseData.daily[i].uvi < 7 && responseData.daily[i].uvi > 4) {
-                    // $(".uvIndex").attr("caution");
-                    $("#uvIndex").addClass("caution");
-                } else {
-                    // $(".uvIndex").attr("normal");
-                    $("#uvIndex").addClass("normal");
-                }
 
+                } else if (responseData.daily[i].uvi < 7 && responseData.daily[i].uvi > 4) {
+                    // Yellow
+                    $("#uvIndex").addClass("caution");
+
+                } else {
+                    // Green
+                    $("#uvIndex").addClass("normal");
+
+                }
+                // Write uvIndex to form
                 console.log("UV Index: " + responseData.daily[i].uvi);
                 $("#tempElement4").text("UV Index: ");
                 $("#uvIndex").text(responseData.daily[i].uvi);

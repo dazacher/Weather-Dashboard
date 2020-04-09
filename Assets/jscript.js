@@ -26,21 +26,21 @@ $(document).ready(function () {
         console.log("SearchCityBtn has been clicked");
 
         event.preventDefault();
-        var city = $("#city-input").val().trim();
+        var city = $("#searchCityBtn").val().trim();
         if (!city) {
             return;
         }
         loadTemperatureData(city, weatherArr);
     });
 
-
-    $(".savedCityBtn").on("click", function (event) {
-        console.log("Saved button clicked", searchCityBtn);
+    $(document).on("click",".savedCityBtn", function (event) {
+    // $(".savedCityBtn").on("click", function (event) {
+        console.log("Saved button clicked   ", searchCityBtn);
         cityBtn =  $(".savedCityBtn").val().trim()
-        console.log("$('.savedCityBtn').val().trim()  ",cityBtn);
+        console.log("$('.savedCityBtn').val().trim()  ", cityBtn);
         // city = "";
         var city = $(".savedCityBtn").val().trim();
-        console.log(".savedCityBtn.val().trim()", $(".savedCityBtn").val().trim())
+        console.log(".savedCityBtn.val().trim()   ", $(".savedCityBtn").val().trim())
         $(".card-group").empty();
         cityName = "";
         temperature = ""
@@ -68,7 +68,7 @@ $(document).ready(function () {
     }
 
     function loadTemperatureData(city, passedWeatherArr) {
-        console.log(city);
+        console.log("Beginning of loadTemperatureData function ", city);
         const weatherURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=" + units + "&appid=" + apiKey;
         $.ajax({
             url: weatherURL,
@@ -91,7 +91,7 @@ $(document).ready(function () {
                 method: "GET"
             }).then(function (responseData) {
                 console.log("response.Data ", responseData);
-                console.log("city ", city);
+                // console.log("city ", city);
                 console.log("Inside Function City ", response.city.name);
                 // references the history array 
                 // check to see if city is in array
@@ -105,18 +105,19 @@ $(document).ready(function () {
                 var weatherPar = $("<p>");
                 // Providing the initial button text
 
-                console.log(city);
+                console.log("Providing initial botton text ", city);
                 if (!city) {
                     return;
                 }
                 // push to array and then update local storage
                 if (weatherArr.indexOf(city) < 0) {
                     console.log('New entry')
-                    console.log("city", city);
+                    console.log("New entry city", city);
                     // var city = $("#city-input").val().trim()
                     weatherBtn.val(city);
                     $(".colButtonView").append(weatherBtn);
                     weatherBtn.attr("class", "savedCityBtn");
+                    weatherBtn.attr('onclick', function (event) { });
                     weatherArr.push(city);
 
                 }
@@ -126,6 +127,7 @@ $(document).ready(function () {
                     weatherBtn.val(city);
                     $(".colButtonView").append(weatherBtn);
                     weatherBtn.attr("class", "savedCityBtn");
+                    weatherBtn.attr('onclick', function (event) { });
                     weatherArr.push(city);
                 }
 
@@ -191,7 +193,7 @@ $(document).ready(function () {
                         var windSpeed = response.list[i].wind.speed;
 
                         // Code for initial card
-                        var dateOfWeather = moment(response.list[i].dt_txt).format('l');
+                        var dateOfWeather = moment.unix(responseData.daily[i].dt).format("M/D/YYYY");
                         console.log("Date of weather " + dateOfWeather);
                         $(".card-title").text(cityName + "   " + dateOfWeather);
                         $(".card-title").append(weatherIcon);

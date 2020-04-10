@@ -22,36 +22,46 @@ $(document).ready(function () {
 
     $("#searchCityBtn").on("click", function (event) {
         // Empty any previous made 5 day forecast cards
+        event.preventDefault();
+        
         $(".card-group").empty();
         console.log("SearchCityBtn has been clicked");
-
-        event.preventDefault();
-        var city = $("#searchCityBtn").val().trim();
-        if (!city) {
+        console.log(" $(#city-input).val().trim() ",  $("#city-input").val().trim());
+        var cityToSearch = $("#city-input").val().trim();
+        // var cityToSearch = $("#searchCityBtn").val().trim();
+        console.log("city-input city1 ", cityToSearch)
+        if (!cityToSearch) {
             return;
         }
-        loadTemperatureData(city, weatherArr);
+        console.log("city-input city2 ", cityToSearch)
+        loadTemperatureData(cityToSearch, weatherArr);
     });
 
     $(document).on("click",".savedCityBtn", function (event) {
     // $(".savedCityBtn").on("click", function (event) {
-        console.log("Saved button clicked   ", searchCityBtn);
-        cityBtn =  $(".savedCityBtn").val().trim()
-        console.log("$('.savedCityBtn').val().trim()  ", cityBtn);
-        // city = "";
-        var city = $(".savedCityBtn").val().trim();
-        console.log(".savedCityBtn.val().trim()   ", $(".savedCityBtn").val().trim())
+
         $(".card-group").empty();
+
         cityName = "";
         temperature = ""
         humidity = "";
         windSpeed = "";
+
         $("#tempElement1").text("");
         $("#tempElement2").text("");
         $("#tempElement3").text("");
         $("#uvIndex").text("");
 
-        loadTemperatureData(city, weatherArr);
+        console.log("Saved button clicked   ", searchCityBtn);
+        cityBtn = $(this).val();
+        // cityBtn =  $(".savedCityBtn").val().trim()
+        console.log("$('.savedCityBtn').val().trim()  ", cityBtn);
+        // var city = $(".savedCityBtn").val().trim();
+        console.log(".savedCityBtn.val().trim()   ", $(".savedCityBtn").val().trim())
+        // ------------------------------------------------------------
+        // ----------------------------------------------------------
+        // cityBtn.text($(this).attr("data-input"));
+        loadTemperatureData(cityBtn, weatherArr);
     });
 
     function reloadButtons(cityLastIndex, weatherArr) {
@@ -60,11 +70,15 @@ $(document).ready(function () {
 
             var weatherBtn = $("<input>");
             var reloadPar = $("<p>");
-            weatherBtn.val(weatherArr[m]);            
+            weatherBtn.val(weatherArr[m]);
+            console.log("weatherArr[m] ",weatherArr[m] )            
             $(".colButtonView").append(weatherBtn);
-            weatherBtn.attr('onclick', function (event) { });
-            weatherBtn.attr("class", "savedCityBtn");            
+            $(".colButtonView").append(reloadPar);
+            weatherBtn.attr('click', function (event) { });
+            weatherBtn.attr("class", "savedCityBtn");    
+            weatherBtn.attr("data-input", weatherArr[m]);        
         };
+        // $(".savedCityBtn").val("");
     }
 
     function loadTemperatureData(city, passedWeatherArr) {

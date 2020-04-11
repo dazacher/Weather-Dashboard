@@ -3,45 +3,53 @@ $(document).ready(function () {
     const units = "imperial";
     // load history from local storage   
     var weatherArr = JSON.parse(localStorage.getItem("weatherArr"));
+    // If no array exist, start one
     if (!weatherArr) {
         weatherArr = [];
     }
     else {
-
+        // If an array exists, load it from local storage
         var lastIndex = weatherArr.length - 1
         const weatherURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + weatherArr[lastIndex] + "&units=" + units + "&appid=" + apiKey;
-
+        // Call function to load data weather data
         loadTemperatureData(weatherArr[lastIndex], weatherArr);
-
+        // Call function to reload buttons and data for last city entered
         reloadButtons(weatherArr[lastIndex], weatherArr);
 
     }
     console.log("weatherArr ", weatherArr);
 
-
-
+    // Search city button click event
     $("#searchCityBtn").on("click", function (event) {
-        // Empty any previous made 5 day forecast cards
+
         event.preventDefault();
-        
+
+        // Empy the 5 day forecast cards
         $(".card-group").empty();
         console.log("SearchCityBtn has been clicked");
-        console.log(" $(#city-input).val().trim() ",  $("#city-input").val().trim());
+        console.log(" $(#city-input).val().trim() ", $("#city-input").val().trim());
+
+        // Grab City from City Input box
         var cityToSearch = $("#city-input").val().trim();
+
         // Empty input box
         $("#city-input").val("");
-        // var cityToSearch = $("#searchCityBtn").val().trim();
         console.log("city-input city1 ", cityToSearch)
+
+        // If no city was entered into input box, do nothing
         if (!cityToSearch) {
             return;
         }
         console.log("city-input city2 ", cityToSearch)
+
+        // Call load temp data function to begin populating page
         loadTemperatureData(cityToSearch, weatherArr);
     });
 
-    $(document).on("click",".savedCityBtn", function (event) {
-    // $(".savedCityBtn").on("click", function (event) {
-
+    // Saved City button from localstorage onclick event
+    $(document).on("click", ".savedCityBtn", function (event) {
+        // $(".savedCityBtn").on("click", function (event) {
+        // Empty Main card and 5 day forecast cards
         $(".card-group").empty();
 
         cityName = "";
@@ -55,53 +63,60 @@ $(document).ready(function () {
         $("#uvIndex").text("");
 
         console.log("Saved button clicked   ", searchCityBtn);
+
+        // Let the click event know which button has been pushed
         cityBtn = $(this).val();
-        // cityBtn =  $(".savedCityBtn").val().trim()
         console.log("$('.savedCityBtn').val().trim()  ", cityBtn);
-        // var city = $(".savedCityBtn").val().trim();
         console.log(".savedCityBtn.val().trim()   ", $(".savedCityBtn").val().trim())
-        // ------------------------------------------------------------
-        // ----------------------------------------------------------
-        // cityBtn.text($(this).attr("data-input"));
+
+        // Call load temp data to populate page
         loadTemperatureData(cityBtn, weatherArr);
     });
 
+    // Reload buttons from local storage
     function reloadButtons(cityLastIndex, weatherArr) {
         loadTemperatureData(cityLastIndex, weatherArr);
         for (let m = 0; m < weatherArr.length; m++) {
-
+            // Build the buttons using a for loop to loop through the array in local storage
             var weatherBtn = $("<input>");
             var reloadPar = $("<p>");
+
             weatherBtn.val(weatherArr[m]);
-            console.log("weatherArr[m] ",weatherArr[m] )            
+            console.log("weatherArr[m] ", weatherArr[m])
+
             $(".colButtonView").append(weatherBtn);
             $(".colButtonView").append(reloadPar);
+
             weatherBtn.attr('click', function (event) { });
-            weatherBtn.attr("class", "savedCityBtn");    
-            weatherBtn.attr("data-input", weatherArr[m]);        
+            weatherBtn.attr("class", "savedCityBtn");
+            weatherBtn.attr("data-input", weatherArr[m]);
         };
-        // $(".savedCityBtn").val("");
     }
 
+    // Load the temp data onto the page using 2 API calls
     function loadTemperatureData(city, passedWeatherArr) {
         console.log("Beginning of loadTemperatureData function ", city);
+
+        // This API call gets the City. We need the city to get the latitude and longitude for the next API call that will collect the rest of the temp data to populate the page.
         const weatherURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=" + units + "&appid=" + apiKey;
+
         $.ajax({
             url: weatherURL,
             method: "GET"
         }).then(function (response) {
             console.log("weatherURL ", response);
+
+            // Get the latitude for the next API call
             let lat = response.city.coord.lat;
             console.log("Response.ciy.coord.lon " + response.city.coord.lon);
-            // // Get the longitude for the next API call
+            // Get the longitude for the next API call
             let lon = response.city.coord.lon;
             console.log("Response.ciy.coord.lat " + response.city.coord.lat);
-            // Get the latitude for the next API call
-
-
-
             console.log("loadTemperatureData function ran");
+
+            // This API call gets the rest of the data we need to populate the data onto the page using the latitude and longitude of the name of the city we got in the previous API call.
             weatherDataURL = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&units=" + units + "&appid=" + apiKey;
+
             $.ajax({
                 url: weatherDataURL,
                 method: "GET"
@@ -110,21 +125,22 @@ $(document).ready(function () {
                 // console.log("city ", city);
                 console.log("Inside Function City ", response.city.name);
                 // references the history array 
-                // check to see if city is in array
+
                 $(".card-group").empty();
-                // console.log("$City " + $("#city-input").val().trim())
+
                 var city = response.city.name;
 
 
                 // Create a new weather buttons
                 var weatherBtn = $("<input>");
                 var weatherPar = $("<p>");
-                // Providing the initial button text
 
                 console.log("Providing initial botton text ", city);
+                // If the city does not exist do nothing
                 if (!city) {
                     return;
                 }
+
                 // push to array and then update local storage
                 if (weatherArr.indexOf(city) < 0) {
                     console.log('New entry')
@@ -134,12 +150,12 @@ $(document).ready(function () {
                     $(".colButtonView").append(weatherBtn);
                     weatherBtn.attr("class", "savedCityBtn");
                     weatherBtn.attr("data-input", city);
-                    
+
                     weatherBtn.attr('onclick', function (event) { });
                     weatherArr.push(city);
                     weatherBtn.val("");
-
                 }
+
                 // if nothing is in local storage yet, push to local storage
                 if (weatherArr.length === 0) {
                     console.log("other if ");
@@ -151,7 +167,7 @@ $(document).ready(function () {
                 }
 
                 localStorage.setItem("weatherArr", JSON.stringify(weatherArr));
-                // $(".colButtonView").append(weatherBtn);
+
                 // Adding the buttons to the city-view div;
                 weatherBtn.val(city);
                 $(".colButtonView").append(weatherPar);
@@ -202,7 +218,7 @@ $(document).ready(function () {
                             // $("#images").append(weatherIcon);
                         };
                         console.log("Response[i] " + moment(response.list[i].dt_txt).format('l'));
-
+                        // Get the data needed ffrom the response API call
                         var cityName = response.city.name;
                         console.log(response.list[i].main.temp);
                         var temperature = response.list[i].main.temp;
@@ -318,10 +334,6 @@ $(document).ready(function () {
                 $("#uvIndex").text(responseData.daily[i].uvi);
 
             });
-
         })
-
     };
-
-
 });

@@ -1,13 +1,14 @@
+/* Set up the formating for the Search side of the page */
 .col-xs-3{
     padding-left: 25px;
     width: 25%;
 }
-
+/* Set up the formating for "Search for a City" lable */
 #cityLabel{
     font-weight: bold;
     font-size: x-large;
 }
-
+/* Set up the formating for the search button icon */
 #searchFas{
     background-color: #3399FF;
     color: white;
@@ -15,7 +16,7 @@
     width: 35px;
     text-align: center;
     padding-top: 9px;
-    /* margin-bottom: 50px; */
+    margin-bottom: -10px;
     margin-left: -15px;   
     float: right;
     border-bottom-right-radius: 10px;
@@ -24,6 +25,12 @@
     border-top-right-radius: 10px;
 }
 
+/* Set up the formating for the input button */
+.inputBtn{
+    margin-bottom: 20px;
+}
+
+/* Set up the formating for the UV Index output */
 #uvIndex{
     border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;
@@ -31,58 +38,62 @@
     border-top-right-radius: 10px;
 }
 
+/* Set up the location for the where the city buttons go */
 .city-view{
     float: left;
 }
-.wi-day-sunny:before {
+
+/* .wi-day-sunny:before {
     content: "\f00d";
-  }
+  } */
+  /* Set up the formating for where the searched city data goes */
 .col-xs-9{
     padding-left: 25px;
     width: 75%;
 }
-
+/* Set up for formating for the card bodies where the searched data goes */
 .card-body{
     width: 100%;
     float: right;
 }
-
+/* Set up the formating where the 5 day forecast goes */
 #fiveDayForecast{
     float: left;
     width: 100%;
     visibility: hidden;
 }
+/* Setup formating for 5 day forecast cards */
 .card-group{
     width: 100%;
 }
-
+/* Setup cackground and font formating for 5 day forecast cards */
 .futureForecast{
     background-color: #3399FF;
     margin: 25px;
     color: white;
 }
-
+/* UV Index danger formating */
 .danger{
     background-color: red;
     color: white;
     width: 45px;
     text-align: center;
 }
-
+/* UV Index normal formating */
 .normal{
     background-color: green;
     color: white;
     width: 45px;
     text-align: center;
 }
-
+/* UV Index caution formating */
 .caution{
     background-color: yellow;
     color: black;
     width: 45px;
     text-align: center;
 }
-
+/* UV Index output formating */
 #tempElement4{
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
@@ -90,14 +101,15 @@
     border-bottom-left-radius: 5px;
 }
 
+/* Formating for any columns that are 12 long */
 .col-xs-12{
     width: 100%;
 }
-
+/* formating for rows */
 .row{
     padding-left: 10px;
 }
-
+/* formating for the Search City label and Search City input box */
 #cityLabel, #city-input{
     padding-left: 10px;
 }

@@ -28,6 +28,8 @@ $(document).ready(function () {
         console.log("SearchCityBtn has been clicked");
         console.log(" $(#city-input).val().trim() ",  $("#city-input").val().trim());
         var cityToSearch = $("#city-input").val().trim();
+        // Empty input box
+        $("#city-input").val("");
         // var cityToSearch = $("#searchCityBtn").val().trim();
         console.log("city-input city1 ", cityToSearch)
         if (!cityToSearch) {
@@ -131,8 +133,11 @@ $(document).ready(function () {
                     weatherBtn.val(city);
                     $(".colButtonView").append(weatherBtn);
                     weatherBtn.attr("class", "savedCityBtn");
+                    weatherBtn.attr("data-input", city);
+                    
                     weatherBtn.attr('onclick', function (event) { });
                     weatherArr.push(city);
+                    weatherBtn.val("");
 
                 }
                 // if nothing is in local storage yet, push to local storage

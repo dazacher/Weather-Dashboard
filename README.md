@@ -6,3 +6,4 @@ The information presented will be the current days weather including date, tempe
 
 Once a city has been searched for, it will be saved to localstorage. If the user closes the page and comes back later, all the data and buttons will be reloaded back onto the page, with the last city searched data appearing on the page.
 
+https://dazacher.github.io/Weather-Dashboard/

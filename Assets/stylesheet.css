@@ -31,9 +31,6 @@
     border: transparent;
 }
 
-.colMainDataCard {
-    text-align: center;
-}
 /* Set up the formating for the UV Index output */
 #uvIndex{
     border-bottom-right-radius: 10px;
@@ -47,35 +44,37 @@
     float: left;
 }
 
-/* .wi-day-sunny:before {
-    content: "\f00d";
-  } */
   /* Set up the formating for where the searched city data goes */
 .col-xs-9{
     padding-left: 25px;
     width: 75%;
 }
+
 /* Set up for formating for the card bodies where the searched data goes */
 .card-body{
     width: 100%;
     float: right;
 }
+
 /* Set up the formating where the 5 day forecast goes */
 #fiveDayForecast{
     float: left;
     width: 100%;
     visibility: hidden;
 }
+
 /* Setup formating for 5 day forecast cards */
 .card-group{
     width: 100%;
 }
+
 /* Setup cackground and font formating for 5 day forecast cards */
 .futureForecast{
     background-color: #3399FF;
     margin: 25px;
     color: white;
 }
+
 /* UV Index danger formating */
 .danger{
     background-color: red;
@@ -83,6 +82,7 @@
     width: 45px;
     text-align: center;
 }
+
 /* UV Index normal formating */
 .normal{
     background-color: green;
@@ -90,6 +90,7 @@
     width: 45px;
     text-align: center;
 }
+
 /* UV Index caution formating */
 .caution{
     background-color: yellow;
@@ -97,6 +98,7 @@
     width: 45px;
     text-align: center;
 }
+
 /* UV Index output formating */
 #tempElement4{
     border-top-right-radius: 5px;
@@ -109,10 +111,12 @@
 .col-xs-12{
     width: 100%;
 }
+
 /* formating for rows */
 .row{
     padding-left: 10px;
 }
+
 /* formating for the Search City label and Search City input box */
 #cityLabel, #city-input{
     padding-left: 10px;

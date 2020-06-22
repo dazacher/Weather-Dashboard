@@ -31,80 +31,81 @@
 </head>
 
 <body>
-    <form id="weather-form">
-        <div class="row">
-            <div class="col-xs-3 searchFunctionality">
-                <div class="row">
-                    <div class="cos-xs-12" searchBtn>
-                        <label id="cityLabel" for="city-input">Search for a City</label><br>
-                        <input type="text" id="city-input">
-                        <!-- Button triggers new city to be added -->
-                        <button class="inputBtn" id="searchCityBtn">
-                            <!-- Icon for Search button -->
-                            <i class="fas fa-search" id="searchFas"></i>
-                            <p></p>
+    <div class="container">
+        <form id="weather-form">
+            <div class="row">
+                <div class="col-xs-3 searchFunctionality">
+                    <div class="row">
+                        <div class="cos-xs-12" searchBtn>
+                            <label id="cityLabel" for="city-input">Search for a City</label><br>
+                            <input type="text" id="city-input">
+                            <!-- Button triggers new city to be added -->
+                            <button class="inputBtn" id="searchCityBtn">
+                                <!-- Icon for Search button -->
+                                <i class="fas fa-search" id="searchFas"></i>
+                                <p></p>
+                        </div>
                     </div>
-                </div>
-                <div class="row rowButtonView">
-                    <div class="col-xs-12 buttonView">
-                        <!-- Cities buttons go here -->
-                        <div class="city-view">
-                            <div class="row">
-                                <div class="col-xs-12 colButtonView">
+                    <div class="row rowButtonView">
+                        <div class="col-xs-12 buttonView">
+                            <!-- Cities buttons go here -->
+                            <div class="city-view">
+                                <div class="row">
+                                    <div class="col-xs-12 colButtonView">
 
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-xs-9 colDisplayArea">
-                <div class="row rowMainDataCard">
-                    <div class="col-xs-12 colMainDataCard">
-                        <h1>Weather Dashboard</h1>
-                        <form>
-                            <div class="card w-75">
-                                <!-- Where the main card data goes first day weather data -->
-                                <div class="card-body">
-                                    <!-- City -->
-                                    <h5 class="card-title"><i id="images"></i>
-                                        <!-- <i id="images"></i> -->
-                                    </h5>
-                                    <!-- Temperature -->
-                                    <p class="card-text" id="tempElement1"></p>
-                                    <!-- Humidity -->
-                                    <p class="card-text" id="tempElement2"></p>
-                                    <!-- Wind speed -->
-                                    <p class="card-text" id="tempElement3"></p>
-                                    <!-- UV INdex -->
-                                    <label class="card-text" id="tempElement4"></label>
-                                    <label id="uvIndex"></label>
-                                    <!-- Date -->
-                                    <label class="weatherDate"></label>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="row row5DayForcast">
-                        <div class="col-xs-12 col5DayForcast">
+                <div class="col-xs-9 colDisplayArea">
+                    <div class="row rowMainDataCard">
+                        <div class="col-xs-12 ">
+                            <h1>Weather Dashboard</h1>
                             <form>
-                                <p></p>
-                                <div>
-                                    <h5 id="fiveDayForecast">5-Day Forecast:
-                                    </h5>
-                                </div>
-                                <!-- Where the 5 day forecast goes -->
-                                <div class="card-group">
-
+                                <div class="card w-75">
+                                    <!-- Where the main card data goes first day weather data -->
+                                    <div class="card-body">
+                                        <!-- City -->
+                                        <h5 class="card-title"><i id="images"></i>
+                                            <!-- <i id="images"></i> -->
+                                        </h5>
+                                        <!-- Temperature -->
+                                        <p class="card-text" id="tempElement1"></p>
+                                        <!-- Humidity -->
+                                        <p class="card-text" id="tempElement2"></p>
+                                        <!-- Wind speed -->
+                                        <p class="card-text" id="tempElement3"></p>
+                                        <!-- UV INdex -->
+                                        <label class="card-text" id="tempElement4"></label>
+                                        <label id="uvIndex"></label>
+                                        <!-- Date -->
+                                        <label class="weatherDate"></label>
+                                    </div>
                                 </div>
                             </form>
                         </div>
+                        <div class="row row5DayForcast">
+                            <div class="col-xs-12 col5DayForcast">
+                                <form>
+                                    <p></p>
+                                    <div>
+                                        <h5 id="fiveDayForecast">5-Day Forecast:
+                                        </h5>
+                                    </div>
+                                    <!-- Where the 5 day forecast goes -->
+                                    <div class="card-group">
+
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        </div>
-    </form>
+        </form>
+    </div>
 </body>
 
 </html>

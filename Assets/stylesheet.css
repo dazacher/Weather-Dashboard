@@ -31,7 +31,7 @@
     border: transparent;
 }
 
-h1 {
+.colMainDataCard {
     text-align: center;
 }
 /* Set up the formating for the UV Index output */

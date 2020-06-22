@@ -28,8 +28,12 @@
 /* Set up the formating for the input button */
 .inputBtn{
     margin-bottom: 20px;
+    border: transparent;
 }
 
+h1 {
+    text-align: center;
+}
 /* Set up the formating for the UV Index output */
 #uvIndex{
     border-bottom-right-radius: 10px;

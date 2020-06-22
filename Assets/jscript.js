@@ -309,6 +309,8 @@ $(document).ready(function () {
                         temperaturePar.attr("class", "card-text");
                         humidityPar.attr("class", "card-text");
                     };
+
+                    
                 };
 
                 // Remove uvIndex class between lookups so as not to confuse the system

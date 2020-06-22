@@ -3,11 +3,13 @@
     padding-left: 25px;
     width: 25%;
 }
+
 /* Set up the formating for "Search for a City" lable */
 #cityLabel{
     font-weight: bold;
     font-size: x-large;
 }
+
 /* Set up the formating for the search button icon */
 #searchFas{
     background-color: #3399FF;
